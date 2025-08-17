@@ -3,3 +3,32 @@ from __future__ import annotations
 import time
 from abc import abstractmethod
 from dataclasses import dataclass, field
+from typing import Any, ClassVar
+
+
+class PluginError(Exception):
+    pass
+
+
+class DuplicatePluginError(PluginError):
+    def __init__(self, name: str) -> None:
+        super().__init__(f"plugin already registered: {name!r}")
+
+
+class UnknownPluginError(PluginError):
+    def __init__(self, name: str) -> None:
+        super().__init__(f"unknown plugin: {name!r}")
+
+
+class DependencyCycleError(PluginError):
+    pass
+
+
+class HookRegistry:
+    def __init__(self) -> None:
+        self._hooks: dict[str, list[Callable[[dict[str, Any]], Any]]] = {}
+
+    def register(self, hook_name: str, callback: Callable[[dict[str, Any]], Any]) -> None:
+        self._hooks.setdefault(hook_name, []).append(callback)
+
+    def emit(self, hook_name: str, context: dict[str, Any]) -> list[Any]:
