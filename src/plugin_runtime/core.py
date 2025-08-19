@@ -34,3 +34,4 @@ class HookRegistry:
     def emit(self, hook_name: str, context: dict[str, Any]) -> list[Any]:
         return [callback(context) for callback in self._hooks.get(hook_name, [])]
 
+    def hook_names(self) -> tuple[str, ...]:
