@@ -36,3 +36,5 @@ class HookRegistry:
 
     def hook_names(self) -> tuple[str, ...]:
         return tuple(sorted(self._hooks))
+
+
