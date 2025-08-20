@@ -35,3 +35,4 @@ class HookRegistry:
         return [callback(context) for callback in self._hooks.get(hook_name, [])]
 
     def hook_names(self) -> tuple[str, ...]:
+        return tuple(sorted(self._hooks))
