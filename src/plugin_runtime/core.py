@@ -38,3 +38,4 @@ class HookRegistry:
         return tuple(sorted(self._hooks))
 
 
+@dataclass
