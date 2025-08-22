@@ -43,3 +43,5 @@ class PluginContext:
     config: dict[str, Any] = field(default_factory=dict)
     services: dict[str, Any] = field(default_factory=dict)
     hooks: HookRegistry = field(default_factory=HookRegistry)
+
+    def service(self, name: str) -> Any:
