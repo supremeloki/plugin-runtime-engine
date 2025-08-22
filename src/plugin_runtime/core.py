@@ -45,3 +45,4 @@ class PluginContext:
     hooks: HookRegistry = field(default_factory=HookRegistry)
 
     def service(self, name: str) -> Any:
+        if name not in self.services:
