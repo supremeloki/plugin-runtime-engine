@@ -40,3 +40,5 @@ class HookRegistry:
 
 @dataclass
 class PluginContext:
+    config: dict[str, Any] = field(default_factory=dict)
+    services: dict[str, Any] = field(default_factory=dict)
