@@ -39,3 +39,4 @@ class HookRegistry:
 
 
 @dataclass
+class PluginContext:
