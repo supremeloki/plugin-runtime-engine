@@ -47,3 +47,5 @@ class PluginContext:
     def service(self, name: str) -> Any:
         if name not in self.services:
             raise PluginError(f"service not provided: {name!r}")
+        return self.services[name]
+
