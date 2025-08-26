@@ -49,3 +49,4 @@ class PluginContext:
             raise PluginError(f"service not provided: {name!r}")
         return self.services[name]
 
+
