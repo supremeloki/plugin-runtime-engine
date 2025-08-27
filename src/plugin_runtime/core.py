@@ -50,3 +50,4 @@ class PluginContext:
         return self.services[name]
 
 
+class Plugin:
