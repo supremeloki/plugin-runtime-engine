@@ -53,3 +53,4 @@ class PluginContext:
 class Plugin:
     name: ClassVar[str] = ""
     version: ClassVar[str] = "0.0.0"
+    depends_on: ClassVar[tuple[str, ...]] = ()
