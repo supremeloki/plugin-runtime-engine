@@ -56,3 +56,4 @@ class Plugin:
     depends_on: ClassVar[tuple[str, ...]] = ()
     hooks_subscribed: ClassVar[tuple[str, ...]] = ()
 
+    def setup(self, context: PluginContext) -> None: ...
