@@ -60,3 +60,4 @@ class Plugin:
     def teardown(self, context: PluginContext) -> None: ...
 
     @abstractmethod
+    def capabilities(self) -> dict[str, Callable[[Any], Any]]:
