@@ -61,3 +61,4 @@ class Plugin:
 
     @abstractmethod
     def capabilities(self) -> dict[str, Callable[[Any], Any]]:
+        raise NotImplementedError
