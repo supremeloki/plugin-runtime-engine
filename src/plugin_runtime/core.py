@@ -64,3 +64,4 @@ class Plugin:
         raise NotImplementedError
 
     def on_hook(self, hook_name: str, context: dict[str, Any]) -> Any:
+        return None
