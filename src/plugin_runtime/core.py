@@ -62,3 +62,5 @@ class Plugin:
     @abstractmethod
     def capabilities(self) -> dict[str, Callable[[Any], Any]]:
         raise NotImplementedError
+
+    def on_hook(self, hook_name: str, context: dict[str, Any]) -> Any:
