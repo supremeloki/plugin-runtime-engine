@@ -65,3 +65,5 @@ class Plugin:
 
     def on_hook(self, hook_name: str, context: dict[str, Any]) -> Any:
         return None
+
+
