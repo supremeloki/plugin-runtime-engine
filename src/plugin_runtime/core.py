@@ -67,3 +67,4 @@ class Plugin:
         return None
 
 
+@dataclass(frozen=True)
