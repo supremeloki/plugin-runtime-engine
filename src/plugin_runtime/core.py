@@ -71,3 +71,4 @@ class Plugin:
 class PluginStatus:
     name: str
     version: str
+    state: str
