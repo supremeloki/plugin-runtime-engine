@@ -69,3 +69,5 @@ class Plugin:
 
 @dataclass(frozen=True)
 class PluginStatus:
+    name: str
+    version: str
