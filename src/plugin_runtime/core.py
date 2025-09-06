@@ -73,3 +73,5 @@ class PluginStatus:
     version: str
     state: str
     setup_seconds: float
+
+
