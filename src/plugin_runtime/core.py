@@ -76,3 +76,4 @@ class PluginStatus:
 
 
 class PluginRuntime:
+    def __init__(self, base_context: PluginContext | None = None) -> None:
