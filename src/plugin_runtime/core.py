@@ -75,3 +75,4 @@ class PluginStatus:
     setup_seconds: float
 
 
+class PluginRuntime:
