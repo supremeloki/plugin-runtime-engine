@@ -79,3 +79,4 @@ class PluginRuntime:
     def __init__(self, base_context: PluginContext | None = None) -> None:
         self._plugins: dict[str, Plugin] = {}
         self._states: dict[str, str] = {}
+        self._setup_times: dict[str, float] = {}
