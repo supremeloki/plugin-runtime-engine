@@ -80,3 +80,5 @@ class PluginRuntime:
         self._plugins: dict[str, Plugin] = {}
         self._states: dict[str, str] = {}
         self._setup_times: dict[str, float] = {}
+        self.context = base_context or PluginContext()
+
