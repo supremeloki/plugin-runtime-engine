@@ -84,3 +84,5 @@ class PluginRuntime:
 
     def register(self, plugin: Plugin) -> "PluginRuntime":
         if plugin.name in self._plugins:
+            raise DuplicatePluginError(plugin.name)
+        self._validate_dependencies(plugin.name, plugin.depends_on)
