@@ -83,3 +83,4 @@ class PluginRuntime:
         self.context = base_context or PluginContext()
 
     def register(self, plugin: Plugin) -> "PluginRuntime":
+        if plugin.name in self._plugins:
