@@ -88,3 +88,5 @@ class PluginRuntime:
         self._validate_dependencies(plugin.name, plugin.depends_on)
         self._plugins[plugin.name] = plugin
         self._states[plugin.name] = "registered"
+        return self
+
