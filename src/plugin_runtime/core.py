@@ -90,3 +90,4 @@ class PluginRuntime:
         self._states[plugin.name] = "registered"
         return self
 
+    def _validate_dependencies(self, name: str,
