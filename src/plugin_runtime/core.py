@@ -93,3 +93,4 @@ class PluginRuntime:
     def _validate_dependencies(self, name: str,
                                dependencies: tuple[str, ...], seen: frozenset[str] = frozenset()) -> None:
         if name in seen:
+            raise DependencyCycleError(f"circular dependency through {name!r}")
