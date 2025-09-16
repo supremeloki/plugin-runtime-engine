@@ -94,3 +94,4 @@ class PluginRuntime:
                                dependencies: tuple[str, ...], seen: frozenset[str] = frozenset()) -> None:
         if name in seen:
             raise DependencyCycleError(f"circular dependency through {name!r}")
+        for dependency in dependencies:
