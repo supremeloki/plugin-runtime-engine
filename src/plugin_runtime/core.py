@@ -97,3 +97,4 @@ class PluginRuntime:
         for dependency in dependencies:
             existing = self._plugins.get(dependency)
             if existing is None:
+                continue
