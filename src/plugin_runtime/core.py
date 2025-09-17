@@ -95,3 +95,5 @@ class PluginRuntime:
         if name in seen:
             raise DependencyCycleError(f"circular dependency through {name!r}")
         for dependency in dependencies:
+            existing = self._plugins.get(dependency)
+            if existing is None:
