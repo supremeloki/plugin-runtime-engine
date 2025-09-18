@@ -93,3 +93,4 @@ def test_missing_dependency_is_tolerated_at_register():
     runtime = PluginRuntime()
     runtime.register(UpperPlugin())
     runtime.boot_all()
+    assert runtime._states["upper"] == "active"
