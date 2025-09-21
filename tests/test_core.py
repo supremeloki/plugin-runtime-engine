@@ -98,3 +98,4 @@ def test_missing_dependency_is_tolerated_at_register():
 
 def test_hooks_fire_through_context():
     seen = []
+
