@@ -101,3 +101,4 @@ def test_hooks_fire_through_context():
 
     class Hooked(Plugin):
         name = "hooked"
+        hooks_subscribed = ("request.received",)
