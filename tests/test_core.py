@@ -103,3 +103,5 @@ def test_hooks_fire_through_context():
         name = "hooked"
         hooks_subscribed = ("request.received",)
 
+        def on_hook(self, context, hook_name=None):
+            seen.append(context["path"])
