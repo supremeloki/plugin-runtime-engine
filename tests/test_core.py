@@ -106,3 +106,4 @@ def test_hooks_fire_through_context():
         def on_hook(self, context, hook_name=None):
             seen.append(context["path"])
             return None
+
