@@ -107,3 +107,4 @@ def test_hooks_fire_through_context():
             seen.append(context["path"])
             return None
 
+        def capabilities(self):
