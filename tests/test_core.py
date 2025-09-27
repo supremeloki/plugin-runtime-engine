@@ -108,3 +108,5 @@ def test_hooks_fire_through_context():
             return None
 
         def capabilities(self):
+            return {}
+
