@@ -110,3 +110,4 @@ def test_hooks_fire_through_context():
         def capabilities(self):
             return {}
 
+    runtime = PluginRuntime()
