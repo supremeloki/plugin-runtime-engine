@@ -111,3 +111,4 @@ def test_hooks_fire_through_context():
             return {}
 
     runtime = PluginRuntime()
+    runtime.register(Hooked())
