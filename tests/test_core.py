@@ -112,3 +112,5 @@ def test_hooks_fire_through_context():
 
     runtime = PluginRuntime()
     runtime.register(Hooked())
+    runtime.boot_all()
+    runtime.context.hooks.emit("request.received", {"path": "/x"})
