@@ -117,3 +117,5 @@ def test_hooks_fire_through_context():
     assert seen == ["/x"]
 
 
+def test_teardown_runs_reverse_order():
+    torn_down = []
