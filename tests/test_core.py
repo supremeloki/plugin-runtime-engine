@@ -116,3 +116,4 @@ def test_hooks_fire_through_context():
     runtime.context.hooks.emit("request.received", {"path": "/x"})
     assert seen == ["/x"]
 
+
