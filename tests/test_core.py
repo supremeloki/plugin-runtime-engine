@@ -120,3 +120,4 @@ def test_hooks_fire_through_context():
 def test_teardown_runs_reverse_order():
     torn_down = []
 
+    class T1(Plugin):
