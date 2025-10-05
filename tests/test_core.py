@@ -123,3 +123,4 @@ def test_teardown_runs_reverse_order():
     class T1(Plugin):
         name = "t1"
         def teardown(self, context): torn_down.append("t1")
+        def capabilities(self): return {}
