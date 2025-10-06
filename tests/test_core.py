@@ -125,3 +125,4 @@ def test_teardown_runs_reverse_order():
         def teardown(self, context): torn_down.append("t1")
         def capabilities(self): return {}
 
+    class T2(T1):
