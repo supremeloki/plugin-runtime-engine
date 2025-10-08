@@ -129,3 +129,4 @@ def test_teardown_runs_reverse_order():
         name = "t2"
         depends_on = ("t1",)
         def teardown(self, context): torn_down.append("t2")
+        def capabilities(self): return {}
