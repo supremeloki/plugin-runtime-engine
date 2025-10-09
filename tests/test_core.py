@@ -132,3 +132,4 @@ def test_teardown_runs_reverse_order():
         def capabilities(self): return {}
 
     runtime = PluginRuntime()
+    runtime.register(T1())
