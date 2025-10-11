@@ -133,3 +133,4 @@ def test_teardown_runs_reverse_order():
 
     runtime = PluginRuntime()
     runtime.register(T1())
+    runtime.register(T2())
