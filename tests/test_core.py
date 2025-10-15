@@ -138,3 +138,4 @@ def test_teardown_runs_reverse_order():
     runtime.shutdown_all()
     assert torn_down == ["t2", "t1"]
 
+
