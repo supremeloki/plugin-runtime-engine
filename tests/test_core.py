@@ -141,3 +141,4 @@ def test_teardown_runs_reverse_order():
 
 def test_status_report_reflects_states():
     runtime = PluginRuntime()
+    runtime.register(EchoPlugin())
