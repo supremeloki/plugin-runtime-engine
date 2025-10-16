@@ -139,3 +139,5 @@ def test_teardown_runs_reverse_order():
     assert torn_down == ["t2", "t1"]
 
 
+def test_status_report_reflects_states():
+    runtime = PluginRuntime()
