@@ -146,3 +146,4 @@ def test_status_report_reflects_states():
     runtime.boot_all()
     statuses_after = {s.name: s.state for s in runtime.status_report()}
     assert statuses_before["echo"] == "registered"
+    assert statuses_after["echo"] == "active"
