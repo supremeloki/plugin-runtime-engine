@@ -148,3 +148,5 @@ def test_status_report_reflects_states():
     assert statuses_before["echo"] == "registered"
     assert statuses_after["echo"] == "active"
 
+
+def test_service_access_via_context():
