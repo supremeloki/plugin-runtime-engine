@@ -151,3 +151,4 @@ def test_status_report_reflects_states():
 
 def test_service_access_via_context():
     class ServiceUser(Plugin):
+        name = "svc_user"
