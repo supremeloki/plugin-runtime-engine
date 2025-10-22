@@ -153,3 +153,5 @@ def test_service_access_via_context():
     class ServiceUser(Plugin):
         name = "svc_user"
         def setup(self, context):
+            self.db = context.service("database")
+        def capabilities(self):
