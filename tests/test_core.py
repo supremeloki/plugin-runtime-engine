@@ -156,3 +156,4 @@ def test_service_access_via_context():
             self.db = context.service("database")
         def capabilities(self):
             return {"query": lambda q: self.db(q)}
+
