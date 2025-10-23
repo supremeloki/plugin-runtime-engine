@@ -157,3 +157,4 @@ def test_service_access_via_context():
         def capabilities(self):
             return {"query": lambda q: self.db(q)}
 
+    runtime = PluginRuntime(PluginContext(services={"database": lambda q: ["rows"]}))
