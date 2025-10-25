@@ -160,3 +160,4 @@ def test_service_access_via_context():
     runtime = PluginRuntime(PluginContext(services={"database": lambda q: ["rows"]}))
     runtime.register(ServiceUser())
     runtime.boot_all()
+    assert runtime.invoke("svc_user", "query", "SELECT 1") == ["rows"]
