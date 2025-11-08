@@ -98,3 +98,77 @@ class PluginRuntime:
             existing = self._plugins.get(dependency)
             if existing is None:
                 continue
+            self._validate_dependencies(dependency, existing.depends_on, seen | {name})
+
+    def startup_order(self) -> list[str]:
+        order: list[str] = []
+        visited: set[str] = set()
+        temp: set[str] = set()
+
+        def visit(name: str) -> None:
+            if name in visited:
+                return
+            if name in temp:
+                raise DependencyCycleError(f"circular dependency at {name!r}")
+            temp.add(name)
+            for dependency in self._plugins[name].depends_on:
+                if dependency in self._plugins:
+                    visit(dependency)
+            temp.discard(name)
+            visited.add(name)
+            order.append(name)
+
+        for plugin_name in sorted(self._plugins):
+            visit(plugin_name)
+        return order
+
+    def boot_all(self) -> None:
+        for name in self.startup_order():
+            self.boot_plugin(name)
+
+    def boot_plugin(self, name: str) -> PluginStatus:
+        plugin = self._get_started_candidate(name)
+        started = time.perf_counter()
+        plugin.setup(self.context)
+        duration = time.perf_counter() - started
+        self._setup_times[name] = duration
+        self._states[name] = "active"
+        for hook in plugin.hooks_subscribed:
+            self.context.hooks.register(hook, plugin.on_hook)
+        return PluginStatus(name=name, version=plugin.version,
+                            state="active", setup_seconds=round(duration, 4))
+
+    def shutdown_all(self) -> None:
+        for name in reversed(self.startup_order()):
+            if self._states.get(name) == "active":
+                self._plugins[name].teardown(self.context)
+                self._states[name] = "stopped"
+
+    def invoke(self, plugin_name: str, capability: str, argument: Any) -> Any:
+        plugin = self._plugins.get(plugin_name)
+        if plugin is None or self._states.get(plugin_name) != "active":
+            raise UnknownPluginError(plugin_name)
+        capabilities = plugin.capabilities()
+        if capability not in capabilities:
+            raise PluginError(
+                f"{plugin_name!r} has no capability {capability!r}; "
+                f"available: {sorted(capabilities)}"
+            )
+        return capabilities[capability](argument)
+
+    def status_report(self) -> list[PluginStatus]:
+        report = []
+        for name, plugin in self._plugins.items():
+            report.append(PluginStatus(
+                name=name,
+                version=plugin.version,
+                state=self._states.get(name, "registered"),
+                setup_seconds=round(self._setup_times.get(name, 0.0), 4),
+            ))
+        return report
+
+    def _get_started_candidate(self, name: str) -> Plugin:
+        plugin = self._plugins.get(name)
+        if plugin is None:
+            raise UnknownPluginError(name)
+        return plugin
